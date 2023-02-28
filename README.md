@@ -24,6 +24,8 @@ example.xlsx를 복사 후 수정하여 작성하시면 편리합니다.
 DB 접속정보를 입력하는 파일입니다.
 
 여러 개의 DB를 사용하고자 하는 경우 ini 파일에 섹션을 여러개 추가하여 사용하셔도 됩니다.
+
+xlsx2db.ini
 ```
 [섹션 이름]
 dbms_name = DBMS의 이름입니다. mssql | mysql | mariadb 중 하나의 값을 사용합니다. 대소문자 구분하지 않습니다.
@@ -35,12 +37,17 @@ database_name = 기본 데이터 베이스 이름입니다.
 
 ### 실행
 새로운 파일을 생성하여 아래와 같이 코드 작성후 사용할 수 있습니다.
+
+example.py
 ```
 from xlsx2db import XLSX2DB
 
-xlsx2db = XLSX2DB(section="DEFAULT") # section은 설정 파일(xlsx2db.ini)의 섹션명
-output: bool = xlsx2db.convert_xlsx2db(path="example.xlsx", table="example") # path는 엑셀 파일의 경로, table은 DB 테이블의 이름
-print(output) # True인 경우 정상 종료
+xlsx2db = XLSX2DB(section="DEFAULT")    # section은 설정 파일(xlsx2db.ini)의 섹션명
+output: bool = xlsx2db.convert_xlsx2db(
+    path="example.xlsx",                # path는 엑셀 파일의 경로
+    table="example"                     # table은 DB 테이블의 이름
+)
+print(output)                           # True인 경우 정상 종료
 ```
 
 위의 코드 작성이 어려운 경우 xlsx2db.py의 하단 코드를 수정하여 사용하여도 됩니다.
