@@ -55,13 +55,21 @@ class XLSX2DB:
         output: bool = True
 
         # Part I. Loading Excel File
+        print("{dt}: Start of loading the file...".format(dt = datetime.datetime.now().strftime("%Y-%m-%d T %H:%M:%S")))
         column_names, records = self.load_xlsx(path)
+        print("{dt}: End of loading the file...".format(dt = datetime.datetime.now().strftime("%Y-%m-%d T %H:%M:%S")))
 
         # Part II. Create Query
+        print("{dt}: Start of creating a query...".format(dt = datetime.datetime.now().strftime("%Y-%m-%d T %H:%M:%S")))
         query = self.create_query(table, column_names)
+        print("{dt}: End of creating a query...".format(dt = datetime.datetime.now().strftime("%Y-%m-%d T %H:%M:%S")))
 
         # Part III. Execute Query
-        return self.execute_query(query, records)
+        print("{dt}: Start of executing the query...".format(dt = datetime.datetime.now().strftime("%Y-%m-%d T %H:%M:%S")))
+        output = self.execute_query(query, records)
+        print("{dt}: End of creating the query...".format(dt = datetime.datetime.now().strftime("%Y-%m-%d T %H:%M:%S")))
+        
+        return output
 
 
     # Part I. Loading Excel XLSX File
@@ -79,7 +87,6 @@ class XLSX2DB:
         workbook = openpyxl.load_workbook(path)
         worksheet = workbook.active
 
-        print("{dt}: Start of loading the file...".format(dt = datetime.datetime.now().strftime("%Y-%m-%d T %H:%M:%S")))
         records: list = []
         i: int = 0
         for row in worksheet.iter_rows(values_only=True):
@@ -91,7 +98,6 @@ class XLSX2DB:
                 # records.append(dict(zip(column_names, list(row))))
                 records.append(list(row))
             i += 1
-        print("{dt}: End of loading the file...".format(dt = datetime.datetime.now().strftime("%Y-%m-%d T %H:%M:%S")))
 
         if self.__debug:
             print("column_names = ")
