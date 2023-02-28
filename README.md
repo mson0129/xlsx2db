@@ -7,7 +7,7 @@
 
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fmson0129%2Fxlsx2db&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
 
-XLSX 파일을 읽어 DB 테이블에 입력합니다.
+XML기반 엑셀 파일(.xlsx)을 읽어 DB 테이블에 입력합니다.
 MSSQL, MySQL, MariaDB를 지원합니다.
 
 ## 사용법
